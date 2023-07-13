@@ -47,14 +47,17 @@ const ParentComponent = () => {
       <h1>Parent Component</h1>
       <ChildComponent cartItems={cartItems} removeItem={removeItem} />
       <div>
+        <label>Item Name</label>
         <input
           type="text"
-          
+          id="itemName"
           value={itemName}
           onChange={(e) => setItemName(e.target.value)}
         />
+        <label>Item Price</label>
         <input
           type="number"
+          id="itemPrice"
          
           value={itemPrice}
           onChange={(e) => setItemPrice(e.target.value)}
