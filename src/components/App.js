@@ -51,7 +51,7 @@ const ParentComponent = () => {
       <lebel>Item Name</lebel>
         <input
           type="text"
-          id="itemName"
+          
           
           value={itemName}
           onChange={(e) => setItemName(e.target.value)}
@@ -59,7 +59,7 @@ const ParentComponent = () => {
         <lebel>Item Price</lebel>
         <input
           type="number"
-          id="itemPrice"
+          
           
           value={itemPrice}
           onChange={(e) => setItemPrice(e.target.value)}
