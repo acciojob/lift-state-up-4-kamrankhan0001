@@ -48,16 +48,18 @@ const ParentComponent = () => {
        
       <ChildComponent cartItems={cartItems} removeItem={removeItem} />
       <div>
-      <lebel id="itemNmae">Item Name</lebel>
+      <lebel>Item Name</lebel>
         <input
           type="text"
+          id="itemName"
           
           value={itemName}
           onChange={(e) => setItemName(e.target.value)}
         />
-        <lebel id="itemPrice">Item Price</lebel>
+        <lebel>Item Price</lebel>
         <input
           type="number"
+          id="itemPrice"
           
           value={itemPrice}
           onChange={(e) => setItemPrice(e.target.value)}
