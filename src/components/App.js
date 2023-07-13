@@ -4,20 +4,16 @@ import './../styles/App.css';
 
 //import React, { useState } from "react";
 
-// Child component to display the list of items
 const ChildComponent = ({ cartItems, removeItem }) => {
   return (
     <div className="child">
-      
-  
-      <h2>Child Component</h2>
+     <h2>Child Component</h2>
       <ul>
         {cartItems.map((item, index) => (
           <li key={index}>
             <span id="itemName">{item.name}</span>
             <span id="itemPrice">{item.price}</span>
             <button onClick={() => removeItem(index)}>Remove</button>
-
           </li>
         ))}
       </ul>
@@ -25,37 +21,50 @@ const ChildComponent = ({ cartItems, removeItem }) => {
   );
 };
 
-// Parent component
 const ParentComponent = () => {
-  const [cartItems, setCartItems] = useState([
-    { name: "Item 1", price: 10 },
-    { name: "Item 2", price: 20 },
-    { name: "Item 3", price: 30 }
-  ]);
+  const [cartItems, setCartItems] = useState([]);
+  const [itemName, setItemName] = useState("");
+  const [itemPrice, setItemPrice] = useState("");
 
-  // Function to remove an item from cart
   const removeItem = (index) => {
     const updatedCartItems = [...cartItems];
     updatedCartItems.splice(index, 1);
     setCartItems(updatedCartItems);
   };
 
-
-  const addItem = (index) => {
-    const updatedCartItems = [...cartItems];
-    updatedCartItems.splice(index, 1);
-    setCartItems(updatedCartItems);
+  const addItem = () => {
+     
+    if (itemName !== "" && itemPrice !== "") {
+      const newItem = { name: itemName, price: Number(itemPrice) };
+      setCartItems([...cartItems, newItem]);
+      setItemName("");
+      setItemPrice("");
+    }
   };
-  
+
   return (
     <div className="parent">
       <h1>Parent Component</h1>
-      <label>Item name:</label>
-      <input type="text"></input>
-      <label>Item Price:</label>
-      <input type="number"></input>
-       <button onClick={() => addItem(index)}>AddItem</button>
+       
       <ChildComponent cartItems={cartItems} removeItem={removeItem} />
+      <div>
+      <lebel>Item Name</lebel>
+        <input
+          type="text"
+          
+          value={itemName}
+          onChange={(e) => setItemName(e.target.value)}
+        />
+        <lebel>Item Price</lebel>
+        <input
+          type="number"
+          
+          value={itemPrice}
+          onChange={(e) => setItemPrice(e.target.value)}
+        />
+        <button onClick={addItem}>Add Item</button>
+        
+      </div>
     </div>
   );
 };
